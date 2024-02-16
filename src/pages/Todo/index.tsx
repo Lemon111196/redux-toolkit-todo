@@ -43,6 +43,7 @@ export default function Todo() {
     const handleEditCancel = () => {
         setEditingId(null);
         setEditText('');
+        setIsEditDialogOpen(false);
     }
 
     //! Delete todo
@@ -73,7 +74,7 @@ export default function Todo() {
                     label="Todo"
                     variant="outlined"
                     name="todo"
-
+                    value={text}
                     onChange={(e) => setText(e.target.value)} />
                 <Button
                     variant="outlined"
@@ -123,6 +124,5 @@ export default function Todo() {
                 <p>Are you sure?</p>
             </Dialog>
         </TodoContainer>
-
     )
 }
