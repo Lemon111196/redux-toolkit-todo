@@ -11,6 +11,7 @@ import Dialog from "../../components/Modal";
 export default function Todo() {
     const [text, setText] = useState('');
     const dispatch = useDispatch();
+    const [editTodo, setEditTodo] = useState({ id: 0, text: '' });
     const todos = useSelector((state: RootState) => state.todos.todos);
     const [editText, setEditText] = useState('');
     const [editingId, setEditingId] = useState<number | null>(null);
@@ -29,9 +30,8 @@ export default function Todo() {
 
     //! Update todo
     const handleUpdate = (id: number, text: string) => {
-        setEditingId(id);
-        setEditText(text);
-        console.log(setEditingId(id));
+        setEditTodo({ id, text });
+        setIsEditDialogOpen(true);
     }
     const handleEditSubmit = (id: number) => {
         dispatch(updateTodo({ id, newText: editText }))
